@@ -1,27 +1,16 @@
 package com.prueba.besil.theelectricfactoryprueba.ui.product.view
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.Toast
 import com.prueba.besil.theelectricfactoryprueba.R
-import com.prueba.besil.theelectricfactoryprueba.data.network.DTO.ClientDTO
 import com.prueba.besil.theelectricfactoryprueba.data.network.DTO.ProductDTO
 import com.prueba.besil.theelectricfactoryprueba.ui.base.view.BaseActivity
-import com.prueba.besil.theelectricfactoryprueba.ui.client.view.ClientAdapter
-import com.prueba.besil.theelectricfactoryprueba.ui.client.view.ClientFragment
 import com.prueba.besil.theelectricfactoryprueba.ui.product.interactor.ProductMVPInteractor
 import com.prueba.besil.theelectricfactoryprueba.ui.product.presenter.ProductMVPPresenter
-import com.prueba.besil.theelectricfactoryprueba.util.addFragment
-import com.prueba.besil.theelectricfactoryprueba.util.hideFragment
 import com.prueba.besil.theelectricfactoryprueba.util.removeFragment
-import com.prueba.besil.theelectricfactoryprueba.util.showFragment
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_product.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_clients.*
 import javax.inject.Inject
 
 
@@ -68,9 +57,9 @@ class ProductActivity : BaseActivity(), ProductMVPView {
 
     override fun loadProgress(enabled: Boolean) {
         if (enabled)
-            pbRestaurantes.visibility = View.VISIBLE
+            pbProducts.visibility = View.VISIBLE
         else
-            pbRestaurantes.visibility = View.GONE
+            pbProducts.visibility = View.GONE
     }
 
 }

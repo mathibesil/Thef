@@ -7,19 +7,17 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.prueba.besil.theelectricfactoryprueba.R
 import com.prueba.besil.theelectricfactoryprueba.data.network.DTO.ClientDTO
-import com.prueba.besil.theelectricfactoryprueba.data.network.DTO.ProductDTO
 import com.prueba.besil.theelectricfactoryprueba.ui.base.view.BaseFragment
 import com.prueba.besil.theelectricfactoryprueba.ui.client.interactor.ClientMVPInteractor
 import com.prueba.besil.theelectricfactoryprueba.ui.client.presenter.ClientPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_clients.*
 import javax.inject.Inject
 
 
@@ -32,7 +30,7 @@ class ClientFragment : BaseFragment(), ClientMVPView {
 
     //endregion
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_clients, container, false)
     }
     override fun setUp() {
         presenter.onAttach(this)
@@ -54,8 +52,8 @@ class ClientFragment : BaseFragment(), ClientMVPView {
     private fun setUpStart() {
         //region RecyclerView
         val mGridLayoutManager = GridLayoutManager(this.context, 1)
-        rvPrincipal.setLayoutManager(mGridLayoutManager) //poner en presenter ELIMINAR
-        rvPrincipal.adapter = adapter
+        rvClients.setLayoutManager(mGridLayoutManager) //poner en presenter ELIMINAR
+        rvClients.adapter = adapter
         home_fragment_swiperefresh.setOnRefreshListener {
             if (!adapter.isLoading) {
                 adapter.isLoading = true
@@ -101,9 +99,9 @@ class ClientFragment : BaseFragment(), ClientMVPView {
 
     override fun loadProgress(enabled: Boolean) {
         if (enabled)
-            pbRestaurantes.visibility = View.VISIBLE
+            pbClients.visibility = View.VISIBLE
         else
-            pbRestaurantes.visibility = View.GONE
+            pbClients.visibility = View.GONE
     }
 
     override fun swipeRefreshOff() {
@@ -111,7 +109,7 @@ class ClientFragment : BaseFragment(), ClientMVPView {
     }
 
     override fun scrollToTop() {
-        rvPrincipal.smoothScrollToPosition(0)
+        rvClients.smoothScrollToPosition(0)
     }
 
 
